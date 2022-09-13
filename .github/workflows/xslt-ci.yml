@@ -17,9 +17,16 @@ jobs:
         with:
           name: config # don't add .zip extension!
           path: build/config.zip
+      - uses: AButler/upload-release-assets@v2.0
+        if: github.event_name == 'release'
+        with:
+          files: build/config.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 name: XSLT CI
 on:
   push:
     branches: [ '**' ]
   pull_request:
     branches: [ '**' ]
+  release:
+    types: [ published ]
