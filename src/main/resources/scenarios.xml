@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
    - Copyright © 2020 - 2021 BITMARCK Service GmbH
-   - Copyright © 2021 ITSG GmbH
+   - Copyright © 2021 - 2023 ITSG GmbH
    -
    - Licensed under the Apache License, Version 2.0 (the "License");
    - you may not use this file except in compliance with the License.
@@ -22,15 +22,15 @@
            https://github.com/itplr-kosit/validator/raw/v1.3.1/src/main/model/xsd/scenarios.xsd">
     <name>DiGA-Konfiguration für den KoSIT Validator</name>
     <author>ITSG GmbH</author>
-    <date>2022-08-31</date>
+    <date>2023-04-28</date>
     <description>
-        <p>TODO</p>
+        <p>Regeln für die Prüfung von Kommunikationsdaten im Bereich DiGA.</p>
     </description>
 
     <scenario>
         <name>DiGA Freischaltcode (DFC0), Version 2.0.0</name>
         <description>
-            <p>TODO</p>
+            <p>Prüfungen für die Anfrage und Antwort von Freischaltcodes gemäß DFC0.</p>
         </description>
         <namespace prefix="dfc0">http://www.gkv-datenaustausch.de/XML-Schema/EDFC0_Pruefung/2.0.0</namespace>
         <namespace prefix="rep">http://www.xoev.de/de/validator/varl/1</namespace>
@@ -59,7 +59,7 @@
     <scenario>
         <name>DiGA Freischaltcode (DFC0), Version 3.0.0</name>
         <description>
-            <p>TODO</p>
+            <p>Prüfungen für die Anfrage und Antwort von Freischaltcodes gemäß DFC0.</p>
         </description>
         <namespace prefix="dfc0">http://www.gkv-datenaustausch.de/XMLSchema/EDFC0-basis/3.0</namespace>
         <namespace prefix="rep">http://www.xoev.de/de/validator/varl/1</namespace>
@@ -86,25 +86,35 @@
     </scenario>
 
     <scenario>
-        <name>DiGA-Rechnung (DRE0-Anfrage) basierend auf EN16931 CIUS XRechnung (UN/CEFACT CII 100.D16B)</name>
+        <name>DiGA-Rechnung (DRE0-Anfrage) 2023-04-28 basierend auf EN16931 CIUS XRechnung 2.2.0 (UN/CEFACT CII 100.D16B)</name>
         <description>
-            <p>Voraussetzung für diese Prüfung ist, dass es sich um eine gültige XRechnung gemäß Version 1.2 oder 2.0
-                handelt. Bitte verwenden Sie dafür im ersten Schritt die "validator-configuration-xrechnung" in der
-                entsprechenden Version, bevor Sie diese Prüfung durchführen.</p>
+            <p>Prüfungen für DiGA-Rechnungen. Prüft zusätzlich die Konformität zu CCI, EN16931 und XRechnung.</p>
         </description>
         <namespace prefix="ram">urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100</namespace>
         <namespace prefix="rep">http://www.xoev.de/de/validator/varl/1</namespace>
         <namespace prefix="rsm">urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100</namespace>
         <match>
             /rsm:CrossIndustryInvoice[starts-with(normalize-space(rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID),
-            'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_')]
+            'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung')]
         </match>
-        <validateWithXmlSchema>
-            <resource>
-                <name>XML-Schema-Dummy für das Abrechnen von Freischaltcodes (basierend auf CII)</name>
-                <location>xml-schema/dre0/dummy-cii.xsd</location>
-            </resource>
-        </validateWithXmlSchema>
+		<validateWithXmlSchema>
+		  <resource>
+			<name>XML Schema for UN/CEFACT XML (SCRDM - CII uncoupled)</name>
+			<location>xml-schema/cii/16b/xsd/CrossIndustryInvoice_100pD16B.xsd</location>
+		  </resource>
+		</validateWithXmlSchema>
+		<validateWithSchematron>
+		  <resource>
+			<name>Schematron rules for EN16931 (CII) (patched for DiGA)</name>
+			<location>xml-schema/cii/16b/xsl/EN16931-CII-validation-diga.xsl</location>
+		  </resource>
+		</validateWithSchematron>
+		<validateWithSchematron>
+		  <resource>
+			<name>Schematron rules for CIUS XRechnung (CII)</name>
+			<location>xml-schema/xrechnung/2.2.0/xsl/XRechnung-CII-validation.xsl</location>
+		  </resource>
+		</validateWithSchematron>
         <validateWithSchematron>
             <resource>
                 <name>Schematron-Regeln für das Abrechnen von Freischaltcodes</name>
@@ -116,6 +126,11 @@
                 <name>Report für das Abrechnen von Freischaltcodes</name>
                 <location>report/dre0.xsl</location>
             </resource>
+            <customLevel level="warning">BR-CL-01</customLevel>
+            <customLevel level="warning">BR-CL-10</customLevel>
+            <customLevel level="warning">BR-CL-23</customLevel>
+            <customLevel level="warning">BR-CL-25</customLevel>
+            <customLevel level="warning">BR-CL-26</customLevel>
         </createReport>
         <acceptMatch>/rep:report/rep:assessment[1]/rep:accept[1]</acceptMatch>
     </scenario>
@@ -123,7 +138,7 @@
     <scenario>
         <name>Prüfbericht für DiGA-Rechnung (DRE0-Antwort)</name>
         <description>
-            <p>TODO</p>
+            <p>Prüft das Schema eines Prüfberichts für DiGA-Rechnung (DRE0-Antwort).</p>
         </description>
         <namespace prefix="rep">http://www.xoev.de/de/validator/varl/1</namespace>
         <match>/rep:report[@varlVersion="1.0.0"]</match>
@@ -150,7 +165,7 @@
     <scenario>
         <name>DiGA-Verzeichnis, Version 2.1.0 (DVZ0)</name>
         <description>
-            <p>TODO</p>
+            <p>Prüft die Liste der Daten des DiGA-Verzeichnis.</p>
         </description>
         <namespace prefix="dvz0">https://xml.diga-ready.de/xsd/dvz0/v2</namespace>
         <namespace prefix="rep">http://www.xoev.de/de/validator/varl/1</namespace>

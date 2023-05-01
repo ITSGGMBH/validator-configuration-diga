@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a:assertions xmlns:a="http://www.xoev.de/de/validator/framework/1/assertions">
+  <a:namespace prefix="rep">http://www.xoev.de/de/validator/varl/1</a:namespace>
+  <a:namespace prefix="s"
+    >http://www.xoev.de/de/validator/framework/1/scenarios</a:namespace>
+  <a:namespace prefix="html">http://www.w3.org/1999/xhtml</a:namespace>
+
+  <!-- Kostenträger Mappingverzeichnis Beispiele -->
+  <a:assertion
+      report-doc="KostentraegerMappingVerzeichnis_2.0-report.xml"
+      test="/rep:report/rep:assessment/rep:accept">
+    Report has status accept
+  </a:assertion>
+  
+  <a:assertion
+      report-doc="KostentraegerMappingVerzeichnis_3.0-report.xml"
+      test="/rep:report/rep:assessment/rep:accept">
+    Report has status accept
+  </a:assertion>
+  
+  <!-- DiGA Abrechnung Beispiele -->
+  <a:assertion
+      report-doc="xrechnung-2.2-valid_normal-report.xml"
+      test="/rep:report/rep:assessment/rep:accept">
+    Report has status accept
+  </a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-valid_korrekturrechnung-report.xml"
+      test="/rep:report/rep:assessment/rep:accept">
+    Report has status accept
+  </a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-valid_korrekturrechnung_multi_grund-report.xml"
+      test="/rep:report/rep:assessment/rep:accept">
+    Report has status accept
+  </a:assertion>
+  
+  <a:assertion
+    report-doc="xrechnung-1.2-invalid-report.xml"
+    test="/rep:report/rep:assessment/rep:reject"
+    >Das Dokument sollte abgelehnt werden</a:assertion>
+  <a:assertion report-doc="xrechnung-1.2-invalid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-1' and @level='error']"
+    >Sollte fehlschlagen, da Dokument veraltet</a:assertion>
+  <a:assertion report-doc="xrechnung-1.2-invalid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-2' and @level='error']"
+    >Sollte fehlschlagen, da Dokument veraltet und Spezifikation unzureichend</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.0-invalid-report.xml"
+      test="/rep:report/rep:assessment/rep:reject"
+    >Das Dokument sollte abgelehnt werden</a:assertion>
+  <a:assertion report-doc="xrechnung-2.0-invalid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-1' and @level='error']"
+    >Sollte fehlschlagen, da Dokument veraltet</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-invalid_docramid-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Das Dokument sollte abgelehnt werden
+  </a:assertion>
+  <a:assertion report-doc="xrechnung-2.2-invalid_docramid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-1' and @level='error']"
+    >Der Fehlercode DRE0-EDC-1 sollte gemeldet werden, da Dokument veraltet</a:assertion>
+  <a:assertion report-doc="xrechnung-2.2-invalid_docramid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-2' and @level='error']"
+    >Der Fehlercode DRE0-EDC-2 sollte gemeldet werden, da Dokument veraltet</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-invalid_docramid_without_ext-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Das Dokument sollte abgelehnt werden
+  </a:assertion>
+  <a:assertion report-doc="xrechnung-2.2-invalid_docramid_without_ext-report.xml"
+    test="count(//rep:message[@code='DRE0-EDC-1']) = 0"
+    >Der Fehlercode DRE0-EDC-1 sollte nicht gemeldet werden, da die Basis korrekt ist</a:assertion>
+  <a:assertion report-doc="xrechnung-2.2-invalid_docramid_without_ext-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-2' and @level='error']"
+    >Der Fehlercode DRE0-EDC-2 sollte gemeldet werden, da Dokument veraltet</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-invalid_384_ohne_refid-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_384_ohne_refid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-CORR-1' and @level='error']"
+    >Der Fehlercode DRE0-EDC-1 sollte gemeldet werden, da die ID des Referenz-Dokuments fehlt</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-invalid_384_docid_gleich_refid-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_384_docid_gleich_refid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-CORR-2' and @level='error']"
+    >Der Fehlercode DRE0-EDC-2 sollte gemeldet werden, da die ID des Referenz-Dokuments gleich der Dokument-ID ist</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-invalid_384_refid_format-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_384_refid_format-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-CORR-3' and @level='error']"
+    >Der Fehlercode DRE0-EDC-3 sollte gemeldet werden, da die ID des Referenz-Dokuments ungültig ist</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-invalid_384_ohne_grund-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_384_ohne_grund-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-CORR-4' and @level='error']"
+    >Der Fehlercode DRE0-EDC-4 sollte gemeldet werden, da kein Korrekturgrund angegeben ist</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-invalid_384_falscher_grund-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_384_falscher_grund-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-CORR-4' and @level='error']"
+    >Der Fehlercode DRE0-EDC-4 sollte gemeldet werden, da ein ungültiger Korrekturgrund angegeben ist</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-invalid_384_grund_10_ohne_text-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_384_grund_10_ohne_text-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-CORR-4' and @level='error']"
+    >Der Fehlercode DRE0-EDC-4 sollte gemeldet werden, da ein ungültiger Korrekturgrund angegeben ist</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-invalid_missing_schemeid-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_missing_schemeid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-AHTS-11' and @level='error']"
+    >Der Fehlercode DRE0-AHTS-11 sollte gemeldet werden, wegen fehlender Schema-ID</a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_missing_schemeid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-AHTS-12' and @level='error']"
+    >Der Fehlercode DRE0-AHTS-12 sollte gemeldet werden, wegen fehlender Schema-ID</a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_missing_schemeid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-AHTS-13' and @level='error']"
+    >Der Fehlercode DRE0-AHTS-13 sollte gemeldet werden, wegen fehlender Schema-ID</a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_missing_schemeid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-SCTT-11' and @level='error']"
+    >Der Fehlercode DRE0-SCTT-11 sollte gemeldet werden, wegen fehlender Schema-ID</a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_missing_schemeid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-SCTT-12' and @level='error']"
+    >Der Fehlercode DRE0-SCTT-12 sollte gemeldet werden, wegen fehlender Schema-ID</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-invalid_obsolete_schemeid-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_obsolete_schemeid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-UPD-1' and @level='information']"
+    >Der Hinweis DRE0-UPD-1 sollte gemeldet werden, wegen veralteter Schema-ID</a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_obsolete_schemeid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-UPD-2' and @level='information']"
+    >Der Hinweis DRE0-UPD-2 sollte gemeldet werden, wegen veralteter Schema-ID</a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_obsolete_schemeid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-UPD-3' and @level='information']"
+    >Der Hinweis DRE0-UPD-3 sollte gemeldet werden, wegen veralteter Schema-ID</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-invalid_schemeid-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_schemeid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'BR-CL-21' and @level='error']"
+    >Der Fehlercode BR-CL-21 muss für eine falsche schemeID gemeldet werden</a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_schemeid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[2]/rep:message[ @code = 'BR-CL-11' and @level='error']"
+    >Der Fehlercode BR-CL-11 muss für eine falsche schemeID gemeldet werden</a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_schemeid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[3]/rep:message[ @code = 'BR-DEX-05' and @level='error']"
+    >Der Fehlercode BR-DEX-05 muss für eine falsche schemeID gemeldet werden</a:assertion>
+  <a:assertion
+    report-doc="xrechnung-2.2-invalid_schemeid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[3]/rep:message[ @code = 'BR-DEX-06' and @level='error']"
+    >Der Fehlercode BR-DEX-06 muss für eine falsche schemeID gemeldet werden</a:assertion>
+
+</a:assertions>

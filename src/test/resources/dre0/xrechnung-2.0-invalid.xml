@@ -23,7 +23,7 @@
                           schema/CrossIndustryInvoice_100pD16B.xsd">
     <rsm:ExchangedDocumentContext>
         <ram:GuidelineSpecifiedDocumentContextParameter>
-            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2</ram:ID>
+            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>
     </rsm:ExchangedDocumentContext>
     <rsm:ExchangedDocument>
@@ -43,23 +43,29 @@
             </ram:AssociatedDocumentLineDocument>
             <ram:SpecifiedTradeProduct>
                 <!-- DiGA-VE-ID: -->
-                <ram:GlobalID schemeID="DiGAVEID">tinnitus-rex</ram:GlobalID>
+                <ram:GlobalID schemeID="DiGAVEID">12345678</ram:GlobalID>
                 <!-- Freischaltcode: -->
-<!--
                 <ram:BuyerAssignedID schemeID="Freischaltcode">ABCDEFGHIJKLMNOP</ram:BuyerAssignedID>
--->
                 <!-- DiGA-Name: -->
                 <ram:Name>Tinnitus Rex</ram:Name>
                 <ram:Description>Ein Artikel für Testrechnungen.</ram:Description>
+<!--
+                <ram:IndividualTradeProductInstance>
+                    <ram:SellByDateTime>
+                        &lt;!&ndash; Tag der Leistungserbringung &ndash;&gt;
+                        <udt:DateTimeString format="102">20200102</udt:DateTimeString>
+                    </ram:SellByDateTime>
+                </ram:IndividualTradeProductInstance>
+-->
             </ram:SpecifiedTradeProduct>
             <ram:SpecifiedLineTradeAgreement>
                 <ram:NetPriceProductTradePrice>
-                    <ram:ChargeAmount>2.00</ram:ChargeAmount>
+                    <ram:ChargeAmount>100.00</ram:ChargeAmount>
                 </ram:NetPriceProductTradePrice>
             </ram:SpecifiedLineTradeAgreement>
             <ram:SpecifiedLineTradeDelivery>
-                <!-- Verordnungsdauer: -->
-                <ram:BilledQuantity unitCode="DAY">50</ram:BilledQuantity>
+                <!-- Eine Packungseinheit: -->
+                <ram:BilledQuantity unitCode="C62">1</ram:BilledQuantity>
             </ram:SpecifiedLineTradeDelivery>
             <ram:SpecifiedLineTradeSettlement>
                 <ram:ApplicableTradeTax>
@@ -75,11 +81,8 @@
         <ram:ApplicableHeaderTradeAgreement>
             <ram:BuyerReference>Leitweg-ID</ram:BuyerReference>
             <ram:SellerTradeParty>
-                <ram:ID>TEST_RECHNUNGSSTELLER</ram:ID>
                 <!-- IK des DiGA-Herstellers als "Seller Identifier" (BT-29) [BR-CO-26]: -->
-<!--
                 <ram:ID schemeID="IK">987654321</ram:ID>
--->
                 <ram:Name>Rechnungssteller</ram:Name>
                 <ram:DefinedTradeContact>
                     <ram:PersonName>Max Mustermann</ram:PersonName>
@@ -101,9 +104,8 @@
                 </ram:SpecifiedTaxRegistration>
             </ram:SellerTradeParty>
             <ram:BuyerTradeParty>
-                <ram:ID>TEST_RECHNUNGSEMPFÄNGER</ram:ID>
                 <!-- IK der Krankenkasse als "Buyer Identifier" (BT-46): -->
-                <ram:ID schemeID="IK">1234567890</ram:ID>
+                <ram:ID schemeID="IK">123456789</ram:ID>
                 <ram:Name>Rechnungsempfänger</ram:Name>
                 <ram:PostalTradeAddress>
                     <ram:PostcodeCode>01234</ram:PostcodeCode>
@@ -113,19 +115,23 @@
                 </ram:PostalTradeAddress>
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
-        <ram:ApplicableHeaderTradeDelivery/>
+        <ram:ApplicableHeaderTradeDelivery>
+            <ram:ActualDeliverySupplyChainEvent>
+                <ram:OccurrenceDateTime>
+                    <!-- Tag der Leistungserbringung -->
+                    <udt:DateTimeString format="102">20200102</udt:DateTimeString>
+                </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+        </ram:ApplicableHeaderTradeDelivery>
         <ram:ApplicableHeaderTradeSettlement>
+            <!-- IK des Zahlungsempfängers als "Payee Identifier" (BT-60): -->
+            <ram:CreditorReferenceID schemeID="IK">987654322</ram:CreditorReferenceID>
+<!--
             <ram:TaxCurrencyCode>EUR</ram:TaxCurrencyCode>
+-->
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
             <ram:SpecifiedTradeSettlementPaymentMeans>
                 <ram:TypeCode>30</ram:TypeCode>
-                <ram:PayeePartyCreditorFinancialAccount>
-                    <ram:IBANID>DE87123456781234567890</ram:IBANID>
-                    <ram:AccountName>Rechnungssteller</ram:AccountName>
-                </ram:PayeePartyCreditorFinancialAccount>
-                <ram:PayeeSpecifiedCreditorFinancialInstitution>
-                    <ram:BICID>DEUTSCHBANK</ram:BICID>
-                </ram:PayeeSpecifiedCreditorFinancialInstitution>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
                 <ram:CalculatedAmount>19.00</ram:CalculatedAmount>
@@ -135,7 +141,7 @@
                 <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
-                <ram:Description>Zahlbar innerhalb 30 Tagen netto nach Rechnungsdatum.</ram:Description>
+                <ram:Description/>
             </ram:SpecifiedTradePaymentTerms>
             <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
                 <ram:LineTotalAmount>100.00</ram:LineTotalAmount>

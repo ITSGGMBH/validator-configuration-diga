@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossIndustryInvoice
+	xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+	xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+	xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100 schema/cii/16b/xsd/CrossIndustryInvoice_100pD16B.xsd">
+	<rsm:ExchangedDocumentContext>
+		<ram:GuidelineSpecifiedDocumentContextParameter>
+			<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2#conformant#urn:xoev-de:kosit:extension:xrechnung_2.2</ram:ID>
+		</ram:GuidelineSpecifiedDocumentContextParameter>
+	</rsm:ExchangedDocumentContext>
+	<rsm:ExchangedDocument>
+		<!-- Neue Rechnungsnummer: -->
+		<ram:ID>Korrektur-RG_1</ram:ID>
+		<!-- Schlüsselwert für Korrekturrechnung: -->
+		<ram:TypeCode>384</ram:TypeCode>
+		<ram:IssueDateTime>
+			<udt:DateTimeString format="102">20220615</udt:DateTimeString>
+		</ram:IssueDateTime>
+	</rsm:ExchangedDocument>
+	<rsm:SupplyChainTradeTransaction>
+		<ram:IncludedSupplyChainTradeLineItem>
+			<ram:AssociatedDocumentLineDocument>
+				<ram:LineID>TEST_POSITION_01</ram:LineID>
+			</ram:AssociatedDocumentLineDocument>
+			<ram:SpecifiedTradeProduct>
+				<!-- DiGA-VE-ID: -->
+				<ram:GlobalID schemeID="XR01">00299001</ram:GlobalID>
+				<!-- Freischaltcode: -->
+				<ram:BuyerAssignedID schemeID="XR02">AXXYYZZAABBCCDD7</ram:BuyerAssignedID>
+				<!-- DiGA-Name: -->
+				<ram:Name>DIGA-Name</ram:Name>
+				<ram:Description>DiGA-GebPos fuer Korrekturrechnung.</ram:Description>
+			</ram:SpecifiedTradeProduct>
+			<ram:SpecifiedLineTradeAgreement>
+				<ram:NetPriceProductTradePrice>
+					<!-- Neu festgelegter Gesamtnettobetrag: -->
+					<ram:ChargeAmount>420.00</ram:ChargeAmount>
+				</ram:NetPriceProductTradePrice>
+			</ram:SpecifiedLineTradeAgreement>
+			<ram:SpecifiedLineTradeDelivery>
+				<!-- Eine Einheit (C62=Stück): -->
+				<ram:BilledQuantity unitCode="C62">1</ram:BilledQuantity>
+			</ram:SpecifiedLineTradeDelivery>
+			<ram:SpecifiedLineTradeSettlement>
+				<ram:ApplicableTradeTax>
+					<ram:TypeCode>VAT</ram:TypeCode>
+					<ram:CategoryCode>S</ram:CategoryCode>
+					<ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+				</ram:ApplicableTradeTax>
+				<ram:SpecifiedTradeSettlementLineMonetarySummation>
+					<ram:LineTotalAmount>420.00</ram:LineTotalAmount>
+				</ram:SpecifiedTradeSettlementLineMonetarySummation>
+			</ram:SpecifiedLineTradeSettlement>
+		</ram:IncludedSupplyChainTradeLineItem>
+		<ram:ApplicableHeaderTradeAgreement>
+			<ram:BuyerReference>Leitweg-ID</ram:BuyerReference>
+			<ram:SellerTradeParty>
+				<!-- IK des DiGA-Herstellers als "Seller Identifier" (BT-29) [BR-CO-26]: -->
+				<ram:ID schemeID="XR03">669900999</ram:ID>
+				<ram:Name>Meyer GmbH</ram:Name>
+				<ram:DefinedTradeContact>
+					<ram:PersonName>Max Mustermann</ram:PersonName>
+					<ram:TelephoneUniversalCommunication>
+						<ram:CompleteNumber>+49 000 001 0001</ram:CompleteNumber>
+					</ram:TelephoneUniversalCommunication>
+					<ram:EmailURIUniversalCommunication>
+						<ram:URIID>max.mustermann@rechnungssteller.de</ram:URIID>
+					</ram:EmailURIUniversalCommunication>
+				</ram:DefinedTradeContact>
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>01234</ram:PostcodeCode>
+					<ram:LineOne>Musterstrasse 1</ram:LineOne>
+					<ram:CityName>Berlin</ram:CityName>
+					<ram:CountryID>DE</ram:CountryID>
+				</ram:PostalTradeAddress>
+				<ram:SpecifiedTaxRegistration>
+					<!-- Angabe der USt-ID: -->
+					<ram:ID schemeID="VA">DE 123 456 789</ram:ID>
+				</ram:SpecifiedTaxRegistration>
+			</ram:SellerTradeParty>
+			<ram:BuyerTradeParty>
+				<!-- IK der Krankenkasse als "Buyer Identifier" (BT-46): -->
+				<ram:ID schemeID="XR03">101234005</ram:ID>
+				<ram:Name>AOKAY XY</ram:Name>
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>01234</ram:PostcodeCode>
+					<ram:LineOne>Musterstrasse 2</ram:LineOne>
+					<ram:CityName>Berlin</ram:CityName>
+					<ram:CountryID>DE</ram:CountryID>
+				</ram:PostalTradeAddress>
+			</ram:BuyerTradeParty>
+		</ram:ApplicableHeaderTradeAgreement>
+		<ram:ApplicableHeaderTradeDelivery>
+			<ram:ActualDeliverySupplyChainEvent>
+				<ram:OccurrenceDateTime>
+					<!-- Tag der Leistungserbringung der ursprünglichen Leistungsgewährung (wie Originalrechnung)-->
+					<udt:DateTimeString format="102">20220601</udt:DateTimeString>
+				</ram:OccurrenceDateTime>
+			</ram:ActualDeliverySupplyChainEvent>
+		</ram:ApplicableHeaderTradeDelivery>
+		<ram:ApplicableHeaderTradeSettlement>
+			<ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+			<ram:PayeeTradeParty>
+				<!-- IK des Zahlungsempfängers als "Payee Identifier" (BT-60): -->
+				<ram:ID schemeID="XR03">987654322</ram:ID>
+				<ram:Name>AOKAY XY Finanzabteilung</ram:Name>
+			</ram:PayeeTradeParty>
+			<ram:SpecifiedTradeSettlementPaymentMeans>
+				<!-- Eine vorher getroffene Vereinbarung (57 Standing agreement) als "Payment means type code" (BT-81) -->
+				<!-- Eine Nutzung von 30 oder 58 ist durch BR-DE-26 nicht möglich -->
+				<!-- Siehe: https://projekte.kosit.org/xrechnung/xrechnung/-/issues/78 -->
+				<ram:TypeCode>57</ram:TypeCode>
+			</ram:SpecifiedTradeSettlementPaymentMeans>
+			<ram:ApplicableTradeTax>
+				<!-- MWt-Betrag aus neu festeglegtem Gesamtbruttobetrag: -->
+				<ram:CalculatedAmount>79.80</ram:CalculatedAmount>
+				<ram:TypeCode>VAT</ram:TypeCode>
+				<ram:BasisAmount>420.00</ram:BasisAmount>
+				<ram:CategoryCode>S</ram:CategoryCode>
+				<ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+			</ram:ApplicableTradeTax>
+			<ram:SpecifiedTradePaymentTerms>
+				<ram:Description/>
+			</ram:SpecifiedTradePaymentTerms>
+			<ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+				<ram:LineTotalAmount>420.00</ram:LineTotalAmount>
+				<ram:TaxBasisTotalAmount>420.00</ram:TaxBasisTotalAmount>
+				<ram:TaxTotalAmount currencyID="EUR">79.80</ram:TaxTotalAmount>
+				<!-- Neu festgelegter Gesamtbruttobetrag (Netto + MWSt): -->
+				<ram:GrandTotalAmount>499.80</ram:GrandTotalAmount>
+				<ram:DuePayableAmount>499.80</ram:DuePayableAmount>
+			</ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+			<ram:InvoiceReferencedDocument>
+				<!-- Angabe der referenzierten Rechnungsnummer der Originalrechnung (BT-25): -->
+				<ram:IssuerAssignedID>Original-RG_1</ram:IssuerAssignedID>
+			</ram:InvoiceReferencedDocument>
+		</ram:ApplicableHeaderTradeSettlement>
+	</rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>
