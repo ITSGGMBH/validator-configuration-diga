@@ -46,6 +46,36 @@
                     <xsl:value-of select="."/>
                 </issueDate>
             </xsl:for-each>
+            
+            <xsl:for-each select="$input-document/*//*[@schemeID='XR01']">
+                <digaVeId>
+                    <xsl:value-of select="."/>
+                </digaVeId>
+            </xsl:for-each>
+            
+            <xsl:for-each select="$input-document/*//*[@schemeID='XR02']">
+                <digaFreischaltcode>
+                    <xsl:value-of select="."/>
+                </digaFreischaltcode>
+            </xsl:for-each>
+            
+            <xsl:for-each select="$input-document/*//ram:SellerTradeParty/*[@schemeID='XR03']">
+                <digaSellerIk>
+                    <xsl:value-of select="."/>
+                </digaSellerIk>
+            </xsl:for-each>
+            
+            <xsl:for-each select="$input-document/*//ram:BuyerTradeParty/*[@schemeID='XR03']">
+                <digaBuyerIk>
+                    <xsl:value-of select="."/>
+                </digaBuyerIk>
+            </xsl:for-each>
+            
+            <xsl:for-each select="$input-document/*//ram:PayeeTradeParty/*[@schemeID='XR03']">
+                <digaPayeeIk>
+                    <xsl:value-of select="."/>
+                </digaPayeeIk>
+            </xsl:for-each>
         </rep:documentData>
     </xsl:template>
 
@@ -68,6 +98,41 @@
             
             <xsl:for-each select="/rep:report/rep:scenarioMatched/rep:documentData/issueDate">
                 <dt>Erkanntes Rechnungsdatum:</dt>
+                <dd>
+                    <xsl:value-of select="."/>
+                </dd>
+            </xsl:for-each>
+            
+            <xsl:for-each select="/rep:report/rep:scenarioMatched/rep:documentData/digaSellerIk">
+                <dt>Erkannte IK (DiGA-Hersteller):</dt>
+                <dd>
+                    <xsl:value-of select="."/>
+                </dd>
+            </xsl:for-each>
+            
+            <xsl:for-each select="/rep:report/rep:scenarioMatched/rep:documentData/digaPayeeIk">
+                <dt>Erkannte IK (Zahlungsempfänger):</dt>
+                <dd>
+                    <xsl:value-of select="."/>
+                </dd>
+            </xsl:for-each>
+            
+            <xsl:for-each select="/rep:report/rep:scenarioMatched/rep:documentData/digaBuyerIk">
+                <dt>Erkannte IK (Krankenkasse):</dt>
+                <dd>
+                    <xsl:value-of select="."/>
+                </dd>
+            </xsl:for-each>
+            
+            <xsl:for-each select="/rep:report/rep:scenarioMatched/rep:documentData/digaVeId">
+                <dt>Erkannte DiGA-VE-ID:</dt>
+                <dd>
+                    <xsl:value-of select="."/>
+                </dd>
+            </xsl:for-each>
+            
+            <xsl:for-each select="/rep:report/rep:scenarioMatched/rep:documentData/digaFreischaltcode">
+                <dt>Erkannter Freischaltcode:</dt>
                 <dd>
                     <xsl:value-of select="."/>
                 </dd>
