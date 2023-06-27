@@ -49,12 +49,46 @@
     >Sollte fehlschlagen, da Dokument veraltet und Spezifikation unzureichend</a:assertion>
   
   <a:assertion
-      report-doc="xrechnung-2.0-invalid-report.xml"
+      report-doc="xrechnung-2.0-valid-report.xml"
+      test="/rep:report/rep:assessment/rep:accept"
+    >Das Dokument darf angenommen werden</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.0-valid_beispiel2-report.xml"
+      test="/rep:report/rep:assessment/rep:accept"
+    >Das Dokument darf angenommen werden</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  <a:assertion report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+    test="//rep:message[ @code = 'DRE0-SCTT-2' and @level='error']"
+    >Sollte fehlschlagen, da Element mit falscher schemeID.</a:assertion>
+  <a:assertion report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+    test="//rep:message[ @code = 'DRE0-SCTT-3' and @level='error']"
+    >Sollte fehlschlagen, da Element mit falscher schemeID.</a:assertion>
+  <a:assertion report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+    test="//rep:message[ @code = 'DRE0-AHTA-1' and @level='error']"
+    >Sollte fehlschlagen, da Element mit falscher schemeID.</a:assertion>
+  <a:assertion report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+    test="//rep:message[ @code = 'DRE0-AHTA-2' and @level='error']"
+    >Sollte fehlschlagen, da Element mit falscher schemeID.</a:assertion>
+  <a:assertion report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+    test="//rep:message[ @code = 'DRE0-AHTS-9' and @level='error']"
+    >Sollte fehlschlagen, da Element mit falscher schemeID.</a:assertion>
+  <a:assertion report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+    test="//rep:message[ @code = 'DRE0-AHTS-10' and @level='error']"
+    >Sollte fehlschlagen, da Element mit falscher schemeID.</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.1.1-invalid-report.xml"
       test="/rep:report/rep:assessment/rep:reject"
     >Das Dokument sollte abgelehnt werden</a:assertion>
-  <a:assertion report-doc="xrechnung-2.0-invalid-report.xml"
+  <a:assertion report-doc="xrechnung-2.1.1-invalid-report.xml"
     test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-1' and @level='error']"
-    >Sollte fehlschlagen, da Dokument veraltet</a:assertion>
+    >Sollte fehlschlagen, da Dokument in der falschen Version vorliegt.</a:assertion>
   
   <a:assertion
       report-doc="xrechnung-2.2-invalid_docramid-report.xml"
@@ -62,7 +96,7 @@
     Das Dokument sollte abgelehnt werden
   </a:assertion>
   <a:assertion report-doc="xrechnung-2.2-invalid_docramid-report.xml"
-    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-1' and @level='error']"
+    test="//rep:message[ @code = 'DRE0-EDC-1' and @level='error']"
     >Der Fehlercode DRE0-EDC-1 sollte gemeldet werden, da Dokument veraltet</a:assertion>
   <a:assertion report-doc="xrechnung-2.2-invalid_docramid-report.xml"
     test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-2' and @level='error']"
@@ -171,18 +205,6 @@
       test="/rep:report/rep:assessment/rep:reject">
     Report has status reject
   </a:assertion>
-  <a:assertion
-    report-doc="xrechnung-2.2-invalid_obsolete_schemeid-report.xml"
-    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-UPD-1' and @level='information']"
-    >Der Hinweis DRE0-UPD-1 sollte gemeldet werden, wegen veralteter Schema-ID</a:assertion>
-  <a:assertion
-    report-doc="xrechnung-2.2-invalid_obsolete_schemeid-report.xml"
-    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-UPD-2' and @level='information']"
-    >Der Hinweis DRE0-UPD-2 sollte gemeldet werden, wegen veralteter Schema-ID</a:assertion>
-  <a:assertion
-    report-doc="xrechnung-2.2-invalid_obsolete_schemeid-report.xml"
-    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-UPD-3' and @level='information']"
-    >Der Hinweis DRE0-UPD-3 sollte gemeldet werden, wegen veralteter Schema-ID</a:assertion>
   
   <a:assertion
       report-doc="xrechnung-2.2-invalid_schemeid-report.xml"
@@ -205,5 +227,4 @@
     report-doc="xrechnung-2.2-invalid_schemeid-report.xml"
     test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[3]/rep:message[ @code = 'BR-DEX-06' and @level='error']"
     >Der Fehlercode BR-DEX-06 muss für eine falsche schemeID gemeldet werden</a:assertion>
-
 </a:assertions>

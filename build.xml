@@ -31,33 +31,32 @@
     <property name="validator.version" value="1.5.0"/>
     <property name="validator.jar" value="validationtool-${validator.version}-standalone.jar"/>
     <property name="xrechnung.download.url" value="https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download"/>
-	
 
     <target name="test" depends="build">
       <copy todir="${test.integration.dir}" verbose="false" includeEmptyDirs="false">
         <fileset dir="${test.src.dir}/">
         </fileset>
       </copy>
-	  
-	  <!-- Testfälle für Freischaltcode -->
+      
+      <!-- Testfälle für Freischaltcode -->
       <antcall target="runtest">
         <param name="test.group" value="dfc0"/>
       </antcall>
-	  
-	  <!-- Testfälle für Abrechnung -->
+      
+      <!-- Testfälle für Abrechnung -->
       <antcall target="runtest">
         <param name="test.group" value="dre0"/>
       </antcall>
-	  
-	  <!-- Testfälle für Kassenverzeichnis -->
+      
+      <!-- Testfälle für Kassenverzeichnis -->
       <antcall target="runtest">
         <param name="test.group" value="dvz0"/>
       </antcall>
-	</target>
-	
+    </target>
+    
     <target name="runtest" depends="build">
-		<property name="test.group.dir" value="${test.integration.dir}/${test.group}"/>
-		<echo>Verarbeite Test Cases in Verzeichnis: ${test.group.dir}</echo>
+        <property name="test.group.dir" value="${test.integration.dir}/${test.group}"/>
+        <echo>Verarbeite Test Cases in Verzeichnis: ${test.group.dir}</echo>
         <apply executable="java" failonerror="true" parallel="true">
             <!-- Aktuelle Validator Version nutzt eine JAXB Version, die Probleme mit Java 11 hat.
               Optimierung wird für Tests vorerst abgeschaltet. Siehe: https://github.com/javaee/jaxb-v2/issues/1197-->
@@ -73,17 +72,17 @@
             <arg value="${test.group.dir}/${test.assertions.filename}" />
             <arg value="-o"/>
             <arg value="${test.group.dir}/report/" />
-			<fileset dir="${test.group.dir}" includes="**/*.xml">
-				<exclude name="**/report/**"/>
-				<exclude name="${test.assertions.filename}"/>
-			</fileset>
+            <fileset dir="${test.group.dir}" includes="**/*.xml">
+                <exclude name="**/report/**"/>
+                <exclude name="${test.assertions.filename}"/>
+            </fileset>
         </apply>
     </target>
 
     <target name="build">
-		<mkdir dir="${build.dir}"/>
-		<mkdir dir="${config.dir}"/>
-		<mkdir dir="${lib.dir}"/>
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${config.dir}"/>
+        <mkdir dir="${lib.dir}"/>
         <parallel threadcount="3">
             <get dest="${lib.dir}" httpusecaches="true" skipexisting="true"
                  src="https://repo1.maven.org/maven2/net/sf/saxon/Saxon-HE/${saxon.version}/Saxon-HE-${saxon.version}.jar"/>
@@ -108,6 +107,17 @@
             </sequential>
             <sequential>
                 <get dest="${lib.dir}" httpusecaches="true" skipexisting="true"
+                     src="${xrechnung.download.url}/release-2020-12-31/validator-configuration-xrechnung_2.0.1_2020-12-31.zip "/>
+                <unzip dest="${lib.dir}/xrechnung_2.0.1" overwrite="false"
+                       src="${lib.dir}/validator-configuration-xrechnung_2.0.1_2020-12-31.zip">
+                    <patternset>
+                        <include name="resources/"/>
+                        <include name="scenarios.xml"/>
+                    </patternset>
+                </unzip>
+            </sequential>
+            <sequential>
+                <get dest="${lib.dir}" httpusecaches="true" skipexisting="true"
                      src="${xrechnung.download.url}/release-2022-11-15/validator-configuration-xrechnung_2.2.0_2022-11-15.zip "/>
                 <unzip dest="${lib.dir}/xrechnung_2.2.0" overwrite="false"
                        src="${lib.dir}/validator-configuration-xrechnung_2.2.0_2022-11-15.zip">
@@ -122,32 +132,36 @@
             <xslt basedir="src/main/schematron" classpath="${lib.dir}/Saxon-HE-${saxon.version}.jar"
                   destdir="${config.dir}/schematron" extension=".xsl"
                   style="${lib.dir}/schxslt/2.0/pipeline-for-svrl.xsl"/>
-			
-			<sequential>
-				<copy todir="${config.dir}">
-					<fileset dir="src/main/resources"/>
-					<file file="LICENSE"/>
-					<file file="README.en.md"/>
-					<file file="README.md"/>
-				</copy>
-				<copy todir="${config.dir}/docs">
-					<fileset dir="docs"/>
-				</copy>
-				<copy todir="${config.dir}/xml-schema/">
-					<fileset dir="${lib.dir}/xrechnung_2.2.0/resources/">
-						<include name="**/cii/**" />
-						<include name="**/xrechnung/**/*CII*" />
-					</fileset>
-				</copy>
-				
-				<!-- Temporary workaround for EN16931 Schematron -->
-				<xslt in="${config.dir}/xml-schema/cii/16b/xsl/EN16931-CII-validation.xsl"
-					  out="${config.dir}/xml-schema/cii/16b/xsl/EN16931-CII-validation-diga.xsl"
-					  classpath="${lib.dir}/Saxon-HE-${saxon.version}.jar"
-					  style="src/main/patch/EN16931_DiGA_workaround.xslt"
-					  extension=".xsl"/>
-				<delete file="${config.dir}/xml-schema/cii/16b/xsl/EN16931-CII-validation.xsl"/>
-			</sequential>
+            
+            <sequential>
+                <copy todir="${config.dir}">
+                    <fileset dir="src/main/resources"/>
+                    <file file="LICENSE"/>
+                    <file file="README.en.md"/>
+                    <file file="README.md"/>
+                </copy>
+                <copy todir="${config.dir}/docs">
+                    <fileset dir="docs"/>
+                </copy>
+                <copy todir="${config.dir}/xml-schema/">
+                    <fileset dir="${lib.dir}/xrechnung_2.0.1/resources/">
+                        <include name="**/cii/**" />
+                        <include name="**/xrechnung/**/*CII*" />
+                    </fileset>
+                    <fileset dir="${lib.dir}/xrechnung_2.2.0/resources/">
+                        <include name="**/cii/**" />
+                        <include name="**/xrechnung/**/*CII*" />
+                    </fileset>
+                </copy>
+                
+                <!-- Temporary workaround for EN16931 Schematron -->
+                <xslt in="${config.dir}/xml-schema/cii/16b/xsl/EN16931-CII-validation.xsl"
+                      out="${config.dir}/xml-schema/cii/16b/xsl/EN16931-CII-validation-diga.xsl"
+                      classpath="${lib.dir}/Saxon-HE-${saxon.version}.jar"
+                      style="src/main/patch/EN16931_DiGA_workaround.xslt"
+                      extension=".xsl"/>
+                <delete file="${config.dir}/xml-schema/cii/16b/xsl/EN16931-CII-validation.xsl"/>
+            </sequential>
         </parallel>
         <zip basedir="${config.dir}" destfile="${config.dir}.zip" filesonly="true"/>
     </target>

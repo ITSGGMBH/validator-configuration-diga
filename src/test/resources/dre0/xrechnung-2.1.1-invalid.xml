@@ -23,7 +23,7 @@
                           schema/CrossIndustryInvoice_100pD16B.xsd">
     <rsm:ExchangedDocumentContext>
         <ram:GuidelineSpecifiedDocumentContextParameter>
-            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</ram:ID>
+            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.1#conformant#urn:xoev-de:kosit:extension:xrechnung_2.1</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>
     </rsm:ExchangedDocumentContext>
     <rsm:ExchangedDocument>
@@ -49,14 +49,6 @@
                 <!-- DiGA-Name: -->
                 <ram:Name>Tinnitus Rex</ram:Name>
                 <ram:Description>Ein Artikel für Testrechnungen.</ram:Description>
-<!--
-                <ram:IndividualTradeProductInstance>
-                    <ram:SellByDateTime>
-                        &lt;!&ndash; Tag der Leistungserbringung &ndash;&gt;
-                        <udt:DateTimeString format="102">20200102</udt:DateTimeString>
-                    </ram:SellByDateTime>
-                </ram:IndividualTradeProductInstance>
--->
             </ram:SpecifiedTradeProduct>
             <ram:SpecifiedLineTradeAgreement>
                 <ram:NetPriceProductTradePrice>
@@ -126,9 +118,6 @@
         <ram:ApplicableHeaderTradeSettlement>
             <!-- IK des Zahlungsempfängers als "Payee Identifier" (BT-60): -->
             <ram:CreditorReferenceID schemeID="IK">987654322</ram:CreditorReferenceID>
-<!--
-            <ram:TaxCurrencyCode>EUR</ram:TaxCurrencyCode>
--->
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
             <ram:SpecifiedTradeSettlementPaymentMeans>
                 <ram:TypeCode>30</ram:TypeCode>

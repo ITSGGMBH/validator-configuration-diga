@@ -25,9 +25,10 @@ Das Ergebnis befindet sich dann im Verzeichnis `build`.
 
 Während des Build-Vorgangs werden einige Abhängigkeiten heruntergeladen.
 
-+ XRechnung Validierung 2022-11-15
++ XRechnung 2.2 Validierung 2022-11-15
++ XRechnung 2.0 Validierung 2020-12-31
 + Saxon HE 10.6
-+ KoSIT XML Validator 1.4.2 (Für Testdurchführung)
++ KoSIT XML Validator 1.5.0 (Für Testdurchführung; andere Versionen wie 1.4.2 generell auch möglich)
 + SchXslt 1.8.5
 
 ## Ant Targets
