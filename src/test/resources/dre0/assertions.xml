@@ -38,6 +38,12 @@
   </a:assertion>
   
   <a:assertion
+      report-doc="xrechnung-1.2-invalid_double_id-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  
+  <a:assertion
     report-doc="xrechnung-1.2-invalid-report.xml"
     test="/rep:report/rep:assessment/rep:reject"
     >Das Dokument sollte abgelehnt werden</a:assertion>
@@ -205,6 +211,11 @@
       test="/rep:report/rep:assessment/rep:reject">
     Report has status reject
   </a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.2-valid_double_id-report.xml"
+      test="/rep:report/rep:assessment/rep:accept"
+    >Das Dokument darf angenommen werden</a:assertion>
   
   <a:assertion
       report-doc="xrechnung-2.2-invalid_schemeid-report.xml"

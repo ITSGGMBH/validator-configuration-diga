@@ -75,11 +75,11 @@
             </sqf:fix>
         </rule>
         <rule context="ram:IncludedSupplyChainTradeLineItem">
-            <assert id="DRE0-SCTT-2" test="matches(normalize-space(ram:SpecifiedTradeProduct/ram:GlobalID), '^\d{8}$')"
+            <assert id="DRE0-SCTT-2" test="matches(normalize-space(ram:SpecifiedTradeProduct/ram:GlobalID[@schemeID='XR01']), '^\d{8}$')"
             >Eine DiGA-Position muss eine DiGA-VE-ID mit exakt acht Stellen enthalten.</assert>
             <assert id="DRE0-SCTT-11" test="normalize-space(ram:SpecifiedTradeProduct/ram:GlobalID/@schemeID) = 'XR01'"
             >Eine DiGA-Rechnung muss für die Angabe der DiGA-VE-ID die schemaID 'XR01' angeben.</assert>
-            <assert id="DRE0-SCTT-3" test="matches(normalize-space(ram:SpecifiedTradeProduct/ram:BuyerAssignedID), '^[A-Z2-7]{16}$')"
+            <assert id="DRE0-SCTT-3" test="matches(normalize-space(ram:SpecifiedTradeProduct/ram:BuyerAssignedID[@schemeID='XR02']), '^[A-Z2-7]{16}$')"
             >Eine DiGA-Position muss einen Freischaltcode mit exakt 16 Stellen enthalten.</assert>
             <assert id="DRE0-SCTT-12" test="normalize-space(ram:SpecifiedTradeProduct/ram:BuyerAssignedID/@schemeID) = 'XR02'"
             >Eine DiGA-Rechnung muss für die Angabe des Freischaltcodes die schemaID 'XR02' angeben.</assert>
@@ -99,21 +99,21 @@
             >Eine DiGA-Position muss eine DiGA-VE-ID mit exakt acht Stellen enthalten.</assert>
         </rule>
         <rule context="ram:ApplicableHeaderTradeAgreement">
-            <assert id="DRE0-AHTA-1" test="matches(normalize-space(ram:SellerTradeParty/ram:ID), '^\d{9}$')"
+            <assert id="DRE0-AHTA-1" test="matches(normalize-space(ram:SellerTradeParty/ram:ID[@schemeID='XR03']), '^\d{9}$')"
             >Eine DiGA-Rechnung muss das Institutionskennzeichen (IK) eines DiGA-Herstellers mit exakt neun Ziffern enthalten.</assert>
-            <assert id="DRE0-AHTS-11" test="normalize-space(ram:SellerTradeParty/ram:ID/@schemeID) = 'XR03'"
+            <assert id="DRE0-AHTS-11" test="count(ram:SellerTradeParty/ram:ID[@schemeID='XR03']) = 1"
             >Eine DiGA-Rechnung muss für die Angabe des Institutionskennzeichen (IK) eines DiGA-Herstellers die schemaID 'XR03' angeben.</assert>
-            <assert id="DRE0-AHTA-2" test="matches(normalize-space(ram:BuyerTradeParty/ram:ID), '^\d{9}$')"
+            <assert id="DRE0-AHTA-2" test="matches(normalize-space(ram:BuyerTradeParty/ram:ID[@schemeID='XR03']), '^\d{9}$')"
             >Eine DiGA-Rechnung muss das Institutionskennzeichen (IK) einer Krankenkasse mit exakt neun Ziffern enthalten.</assert>
-            <assert id="DRE0-AHTS-12" test="normalize-space(ram:BuyerTradeParty/ram:ID/@schemeID) = 'XR03'"
+            <assert id="DRE0-AHTS-12" test="count(ram:BuyerTradeParty/ram:ID[@schemeID='XR03']) = 1"
             >Eine DiGA-Rechnung muss für die Angabe des Institutionskennzeichen (IK) einer Krankenkasse die schemaID 'XR03' angeben.</assert>
         </rule>
         <rule context="ram:ApplicableHeaderTradeSettlement">
-            <assert id="DRE0-AHTS-9" test="matches(normalize-space(ram:PayeeTradeParty/ram:ID), '^\d{9}$')"
+            <assert id="DRE0-AHTS-9" test="matches(normalize-space(ram:PayeeTradeParty/ram:ID[@schemeID='XR03']), '^\d{9}$')"
             >Eine DiGA-Rechnung muss das Institutionskennzeichen (IK) des Zahlungsempfängers mit exakt neun Ziffern enthalten.</assert>
-            <assert id="DRE0-AHTS-13" test="normalize-space(ram:PayeeTradeParty/ram:ID/@schemeID) = 'XR03'"
+            <assert id="DRE0-AHTS-13" test="count(ram:PayeeTradeParty/ram:ID[@schemeID='XR03']) = 1"
             >Eine DiGA-Rechnung muss für die Angabe des Institutionskennzeichen (IK) des Zahlungsempfängers die schemaID 'XR03' angeben.</assert>
-            <assert id="DRE0-AHTS-10" test="normalize-space(ram:PayeeTradeParty/ram:ID) != normalize-space(../ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:ID)"
+            <assert id="DRE0-AHTS-10" test="normalize-space(ram:PayeeTradeParty/ram:ID[@schemeID='XR03']) != normalize-space(../ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:ID[@schemeID='XR03'])"
             >Das Institutionskennzeichen (IK) des Zahlungsempfängers muss sich vom IK der Krankenkasse unterscheiden.</assert>
             <assert id="DRE0-AHTS-1" test="not(ram:TaxCurrencyCode) or normalize-space(ram:TaxCurrencyCode) = 'EUR'"
             >Eine DiGA-Rechnung muss den Mehrwertsteuerbetrag in Euro (EUR) enthalten.</assert>

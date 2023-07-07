@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+                          xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+                          xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                          xsi:schemaLocation="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100
+                          schema/CrossIndustryInvoice_100pD16B.xsd">
+    <rsm:ExchangedDocumentContext>
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
+    </rsm:ExchangedDocumentContext>
+    <rsm:ExchangedDocument>
+        <ram:ID>2020-1</ram:ID>
+        <ram:TypeCode>380</ram:TypeCode>
+        <ram:IssueDateTime>
+            <udt:DateTimeString format="102">20230626</udt:DateTimeString>
+        </ram:IssueDateTime>
+        <ram:IncludedNote>
+            <ram:Content>Eine Testrechnung für das Projekt DiGA-Rechnung.</ram:Content>
+        </ram:IncludedNote>
+    </rsm:ExchangedDocument>
+    <rsm:SupplyChainTradeTransaction>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>TEST_POSITION_01</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedTradeProduct>
+                <!-- DiGA-VE-ID: -->
+                <ram:GlobalID schemeID="DiGAVEID">00001002</ram:GlobalID>
+                <!-- Freischaltcode: -->
+                <ram:BuyerAssignedID schemeID="Freischaltcode">77ACZGGK62LQT777</ram:BuyerAssignedID>
+                <!-- DiGA-Name: -->
+                <ram:Name>Tinnitus Rex</ram:Name>
+                <ram:Description>Ein Artikel für Testrechnungen.</ram:Description>
+            </ram:SpecifiedTradeProduct>
+            <ram:SpecifiedLineTradeAgreement>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount>840.33</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedLineTradeAgreement>
+            <ram:SpecifiedLineTradeDelivery>
+                <!-- Eine Packungseinheit: -->
+                <ram:BilledQuantity unitCode="C62">1</ram:BilledQuantity>
+            </ram:SpecifiedLineTradeDelivery>
+            <ram:SpecifiedLineTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementLineMonetarySummation>
+                    <ram:LineTotalAmount>840.33</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementLineMonetarySummation>
+            </ram:SpecifiedLineTradeSettlement>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:ApplicableHeaderTradeAgreement>
+            <ram:BuyerReference>Leitweg-ID</ram:BuyerReference>
+            <ram:SellerTradeParty>
+                <ram:ID>TEST_RECHNUNGSSTELLER</ram:ID>
+                <!-- IK des DiGA-Herstellers als "Seller Identifier" (BT-29) [BR-CO-26]: -->
+                <ram:ID schemeID="IK">999999961</ram:ID>
+                <ram:Name>Rechnungssteller</ram:Name>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName>Max Mustermann</ram:PersonName>
+                    <ram:TelephoneUniversalCommunication>
+                        <ram:CompleteNumber>+49 000 001 0001</ram:CompleteNumber>
+                    </ram:TelephoneUniversalCommunication>
+                    <ram:EmailURIUniversalCommunication>
+                        <ram:URIID>max.mustermann@rechnungssteller.de</ram:URIID>
+                    </ram:EmailURIUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>01234</ram:PostcodeCode>
+                    <ram:LineOne>Musterstraße 1</ram:LineOne>
+                    <ram:CityName>Berlin</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="VA">DE 123 456 789</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                <ram:ID>TEST_RECHNUNGSEMPFÄNGER</ram:ID>
+                <!-- IK der Krankenkasse als "Buyer Identifier" (BT-46): -->
+                <ram:ID schemeID="IK">999999994</ram:ID>
+                <ram:Name>Rechnungsempfänger</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>01234</ram:PostcodeCode>
+                    <ram:LineOne>Musterstraße 2</ram:LineOne>
+                    <ram:CityName>Berlin</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+            </ram:BuyerTradeParty>
+        </ram:ApplicableHeaderTradeAgreement>
+        <ram:ApplicableHeaderTradeDelivery>
+            <ram:ActualDeliverySupplyChainEvent>
+                <ram:OccurrenceDateTime>
+                    <!-- Tag der Leistungserbringung -->
+                    <udt:DateTimeString format="102">20230626</udt:DateTimeString>
+                </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+        </ram:ApplicableHeaderTradeDelivery>
+        <ram:ApplicableHeaderTradeSettlement>
+            <!-- IK des Zahlungsempfängers als "Payee Identifier" (BT-60): -->
+            <ram:CreditorReferenceID schemeID="IK">999999972</ram:CreditorReferenceID>
+            <ram:TaxCurrencyCode>EUR</ram:TaxCurrencyCode>
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:TypeCode>30</ram:TypeCode>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+                <ram:CalculatedAmount>159.66</ram:CalculatedAmount>
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <ram:BasisAmount>840.33</ram:BasisAmount>
+                <ram:CategoryCode>S</ram:CategoryCode>
+                <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:SpecifiedTradePaymentTerms>
+                <ram:Description/>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+                <ram:LineTotalAmount>840.33</ram:LineTotalAmount>
+                <ram:TaxBasisTotalAmount>840.33</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount currencyID="EUR">159.66</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount>999.99</ram:GrandTotalAmount>
+                <ram:DuePayableAmount>999.99</ram:DuePayableAmount>
+            </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+        </ram:ApplicableHeaderTradeSettlement>
+    </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>
+
+

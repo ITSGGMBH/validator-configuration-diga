@@ -64,6 +64,7 @@
             <arg value="-jar"/>
             <arg value="${lib.dir}/${validator.jar}"/>
             <arg value="-h"/>
+            <arg value="-X" />
             <arg value="-s"/>
             <arg file="${config.dir}/scenarios.xml"/>
             <arg value="-r" />
