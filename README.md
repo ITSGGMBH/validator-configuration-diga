@@ -3,9 +3,10 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-orange.svg)](https://opensource.org/licenses/Apache-2.0)
 [![XSLT CI](https://github.com/bitmarck-service/validator-configuration-diga/actions/workflows/xslt-ci.yml/badge.svg)](https://github.com/bitmarck-service/validator-configuration-diga/actions/workflows/xslt-ci.yml)<br/>
 [![XRechnung 2.2](https://img.shields.io/badge/XRechnung-2.2-blue.svg)](https://github.com/itplr-kosit/validator-configuration-xrechnung/tree/release-2022-11-15)
+[![XRechnung 2.0](https://img.shields.io/badge/XRechnung-2.0-blue.svg)](https://github.com/itplr-kosit/validator-configuration-xrechnung/tree/release-2020-12-31)
 [![Saxon-HE](https://img.shields.io/badge/Saxon--HE-10.6-blue.svg)](https://www.saxonica.com/html/documentation10/about/gettingstarted/gettingstartedjava.html)
 [![SchXslt](https://img.shields.io/badge/SchXslt-1.8.5-blue.svg)](https://github.com/schxslt/schxslt/tree/v1.8.5)
-[![KoSIT Validator](https://img.shields.io/badge/KoSIT%20Validator-1.4.2-blue.svg)](https://github.com/itplr-kosit/validator/tree/v1.4.2)
+[![KoSIT Validator](https://img.shields.io/badge/KoSIT%20Validator-1.5.0-blue.svg)](https://github.com/itplr-kosit/validator/tree/v1.5.0)
 
 
 # DiGA-Konfiguration für den KoSIT Validator
@@ -21,7 +22,7 @@ Weitere technische Informationen finden Sie unter [Development](docs/development
 
 + Validierung von Anfragen und Antworten für das Einlösen von Freischaltcodes gemäß Verfahrenskennzeichen EDFC0 und
   TDFC0.
-+ Validierung von Anfragen und Antworten für das Einreichen von DiGA-Rechnungen auf Basis von EN16931 CIUS XRechnung 2.2, jeweils in Ausprägung UN/CEFACT CII 100.D16B gemäß Verfahrenskennzeichen EDRE0 und TDRE0.
++ Validierung von Anfragen und Antworten für das Einreichen von DiGA-Rechnungen auf Basis von EN16931 CIUS XRechnung 2.2 und 2.0, jeweils in Ausprägung UN/CEFACT CII 100.D16B gemäß Verfahrenskennzeichen EDRE0 und TDRE0.
 + Validierung von Stammdaten zu DiGAs und DiGA-Herstellern gemäß Verfahrenskennzeichen EDVZ0. 
 + Validierung von Stammdaten zum Krankenkassen Mappingverzeichnis.
 
@@ -40,3 +41,4 @@ Weitere technische Informationen finden Sie unter [Development](docs/development
   
   Aus diesem Grund wird übergangsweise intern die `schemeId` Liste erweitert. Dieser Workaround sollte frühest möglich korrigiert werden.
 + Die Reports und Fehlertexte werden nur in deutscher Sprache erstellt.
++ Diese Version definiert Abrechnungen im Format XRechnung 2.0 als akzeptabel. Die Schematron Teilprüfung wird durch die EN16931 Regeln jedoch als "nicht valide" eingestuft.

@@ -18,7 +18,7 @@
 <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100 file:///C:/Users/rene.bonnet/Downloads/validator-configuration-xrechnung_2.2.0_2022-11-15/resources/cii/16b/xsd/CrossIndustryInvoice_100pD16B.xsd">
 	<rsm:ExchangedDocumentContext>
 		<ram:GuidelineSpecifiedDocumentContextParameter>
-			<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</ram:ID>
+			<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_0.3b</ram:ID>
 		</ram:GuidelineSpecifiedDocumentContextParameter>
 	</rsm:ExchangedDocumentContext>
 	<rsm:ExchangedDocument>
@@ -119,7 +119,7 @@
 			</ram:PayeeTradeParty>
 			<ram:SpecifiedTradeSettlementPaymentMeans>
 				<!-- Eine vorher getroffene Vereinbarung (57 Standing agreement) als "Payment means type code" (BT-81) -->
-				<!-- Eine Nutzung von 30 oder 58 ist durch BR-DE-26 nicht mehr möglich -->
+				<!-- Eine Nutzung von 30 oder 58 ist durch BR-DE-23 nicht mehr möglich -->
 				<!-- Siehe: https://projekte.kosit.org/xrechnung/xrechnung/-/issues/78 -->
 				<ram:TypeCode>57</ram:TypeCode>
 			</ram:SpecifiedTradeSettlementPaymentMeans>

@@ -68,6 +68,7 @@
 		<ram:ApplicableHeaderTradeAgreement>
 			<ram:BuyerReference>Leitweg-ID</ram:BuyerReference>
 			<ram:SellerTradeParty>
+				<ram:ID>Sellerid</ram:ID>
 				<!-- IK des DiGA-Herstellers als "Seller Identifier" (BT-29) [BR-CO-26]: -->
 				<ram:ID schemeID="XR03">987654321</ram:ID>
 				<ram:Name>Rechnungssteller</ram:Name>
@@ -91,6 +92,7 @@
 				</ram:SpecifiedTaxRegistration>
 			</ram:SellerTradeParty>
 			<ram:BuyerTradeParty>
+				<ram:ID>Buyerid</ram:ID>
 				<!-- IK der Krankenkasse als "Buyer Identifier" (BT-46): -->
 				<ram:ID schemeID="XR03">123456789</ram:ID>
 				<ram:Name>Rechnungsempfänger</ram:Name>
@@ -102,9 +104,18 @@
 				</ram:PostalTradeAddress>
 			</ram:BuyerTradeParty>
 		</ram:ApplicableHeaderTradeAgreement>
+		<ram:ApplicableHeaderTradeDelivery>
+			<ram:ActualDeliverySupplyChainEvent>
+				<ram:OccurrenceDateTime>
+					<!-- Tag der Leistungserbringung -->
+					<udt:DateTimeString format="102">20200102</udt:DateTimeString>
+				</ram:OccurrenceDateTime>
+			</ram:ActualDeliverySupplyChainEvent>
+		</ram:ApplicableHeaderTradeDelivery>
 		<ram:ApplicableHeaderTradeSettlement>
 			<ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
 			<ram:PayeeTradeParty>
+				<ram:ID>Payeeid</ram:ID>
 				<!-- IK des Zahlungsempfängers als "Payee Identifier" (BT-60): -->
 				<ram:ID schemeID="XR03">987654322</ram:ID>
 				<ram:Name>Payee</ram:Name>
@@ -125,6 +136,13 @@
 			<ram:SpecifiedTradePaymentTerms>
 				<ram:Description/>
 			</ram:SpecifiedTradePaymentTerms>
+			<ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+				<ram:LineTotalAmount>100.00</ram:LineTotalAmount>
+				<ram:TaxBasisTotalAmount>100.00</ram:TaxBasisTotalAmount>
+				<ram:TaxTotalAmount currencyID="EUR">19.00</ram:TaxTotalAmount>
+				<ram:GrandTotalAmount>119.00</ram:GrandTotalAmount>
+				<ram:DuePayableAmount>119.00</ram:DuePayableAmount>
+			</ram:SpecifiedTradeSettlementHeaderMonetarySummation>
 		</ram:ApplicableHeaderTradeSettlement>
 	</rsm:SupplyChainTradeTransaction>
 </rsm:CrossIndustryInvoice>
