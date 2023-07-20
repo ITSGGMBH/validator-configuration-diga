@@ -97,6 +97,12 @@
     >Sollte fehlschlagen, da Dokument in der falschen Version vorliegt.</a:assertion>
   
   <a:assertion
+      report-doc="xrechnung-2.2-invalid_xsd-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Das Dokument sollte abgelehnt werden
+  </a:assertion>
+  
+  <a:assertion
       report-doc="xrechnung-2.2-invalid_docramid-report.xml"
       test="/rep:report/rep:assessment/rep:reject">
     Das Dokument sollte abgelehnt werden
@@ -108,14 +114,15 @@
     test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-2' and @level='error']"
     >Der Fehlercode DRE0-EDC-2 sollte gemeldet werden, da Dokument veraltet</a:assertion>
   
-  <a:assertion
-      report-doc="xrechnung-2.2-invalid_docramid_without_ext-report.xml"
+  <a:assertion report-doc="xrechnung-2.2-invalid_docramid_without_ext-report.xml"
       test="/rep:report/rep:assessment/rep:reject">
     Das Dokument sollte abgelehnt werden
   </a:assertion>
+  
   <a:assertion report-doc="xrechnung-2.2-invalid_docramid_without_ext-report.xml"
-    test="count(//rep:message[@code='DRE0-EDC-1']) = 0"
+    test="count(/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[@code='DRE0-EDC-1']) = 0"
     >Der Fehlercode DRE0-EDC-1 sollte nicht gemeldet werden, da die Basis korrekt ist</a:assertion>
+  
   <a:assertion report-doc="xrechnung-2.2-invalid_docramid_without_ext-report.xml"
     test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-2' and @level='error']"
     >Der Fehlercode DRE0-EDC-2 sollte gemeldet werden, da Dokument veraltet</a:assertion>
