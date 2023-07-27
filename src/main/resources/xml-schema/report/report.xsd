@@ -106,7 +106,7 @@
 
     <xs:complexType name="AssessmentType">
         <xs:sequence>
-            <xs:element name="customLevel" minOccurs="0" maxOccurs="3" type="s:CustomErrorLevel" />
+            <xs:element name="customLevel" minOccurs="0" maxOccurs="unbounded" type="s:CustomErrorLevel" />
             <xs:choice>
                 <xs:annotation>
                     <xs:documentation>Die Empfehlung zum weiteren Umgang mit dem Dokument.</xs:documentation>

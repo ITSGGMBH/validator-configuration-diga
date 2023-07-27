@@ -52,6 +52,11 @@
       <antcall target="runtest">
         <param name="test.group" value="dvz0"/>
       </antcall>
+      
+      <!-- Andere Testfälle-->
+      <antcall target="runtest">
+        <param name="test.group" value="report"/>
+      </antcall>
     </target>
     
     <target name="runtest" depends="build">
