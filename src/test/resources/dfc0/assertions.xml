@@ -5,44 +5,74 @@
   <a:namespace prefix="html">http://www.w3.org/1999/xhtml</a:namespace>
 
 
-  <a:assertion report-doc="ANF.xml"
+  <a:assertion report-doc="Anfrage_2.0.0_valid-report.xml"
                test="/rep:report/rep:assessment/rep:accept">
     Validierung erfolgreich
   </a:assertion>
 
-  <a:assertion report-doc="ANT.xml"
+  <a:assertion report-doc="Anfrage_2.0.0_invalid_UnbekannterNamespace-report.xml"
+               test="/rep:report/rep:assessment/rep:reject">
+    Nicht valide
+  </a:assertion>
+
+  <a:assertion report-doc="Antwort_2.0.0_valid-report.xml"
                test="/rep:report/rep:assessment/rep:accept">
     Validierung erfolgreich
   </a:assertion>
 
-  <a:assertion report-doc="FEH-100.xml"
+  <a:assertion report-doc="Antwort_3.0_valid-report.xml"
                test="/rep:report/rep:assessment/rep:accept">
     Validierung erfolgreich
   </a:assertion>
 
-  <a:assertion report-doc="FEH-101.xml"
+  <a:assertion report-doc="Antwort_2.0.0_invalid_UnbekannterNamespace-report.xml"
+               test="/rep:report/rep:assessment/rep:reject">
+    Nicht valide
+  </a:assertion>
+
+  <a:assertion report-doc="FEH-100-report.xml"
                test="/rep:report/rep:assessment/rep:accept">
     Validierung erfolgreich
   </a:assertion>
 
-  <a:assertion report-doc="FEH-102.xml"
+  <a:assertion report-doc="FEH-101.xml-report"
                test="/rep:report/rep:assessment/rep:accept">
     Validierung erfolgreich
   </a:assertion>
 
-  <a:assertion report-doc="FEH-200.xml"
+  <a:assertion report-doc="FEH-102.xml-report"
                test="/rep:report/rep:assessment/rep:accept">
     Validierung erfolgreich
   </a:assertion>
 
-  <a:assertion report-doc="FEH-201.xml"
+  <a:assertion report-doc="FEH-200.xml-report"
                test="/rep:report/rep:assessment/rep:accept">
     Validierung erfolgreich
   </a:assertion>
 
-  <a:assertion report-doc="FEH-202.xml"
+  <a:assertion report-doc="FEH-201.xml-report"
                test="/rep:report/rep:assessment/rep:accept">
     Validierung erfolgreich
+  </a:assertion>
+
+  <a:assertion report-doc="FEH-202.xml-report"
+               test="/rep:report/rep:assessment/rep:accept">
+    Validierung erfolgreich
+  </a:assertion>
+
+  <a:assertion report-doc="Anfrage_3.0_valid-report.xml"
+               test="/rep:report/rep:assessment/rep:accept">
+    Validierung erfolgreich
+  </a:assertion>
+
+  <a:assertion report-doc="Anfrage_3.0_invalid_UnbekannterNamespace-report.xml"
+               test="/rep:report/rep:assessment/rep:reject">
+    Nicht valide
+  </a:assertion>
+
+  <a:assertion report-doc="Anfrage_3.0_invalid_FreischaltcodeUngueltig-report.xml"
+               test="/rep:report/rep:assessment/rep:reject">
+    Nicht valide
   </a:assertion>
 
 </a:assertions>
