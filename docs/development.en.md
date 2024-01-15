@@ -25,7 +25,6 @@ The result will be placed in the folder `build`.
 Dependencies will be downloaded by the builds process.
 
 + XRechnung 2.2 Validation 2022-11-15
-+ XRechnung 2.0 Validation 2020-12-31
 + Saxon HE 10.6
 + KoSIT XML Validator 1.5.0 (for testing; the configuration is compatible to other versions)
 + SchXslt 1.8.5
