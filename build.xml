@@ -48,6 +48,11 @@
         <param name="test.group" value="dre0"/>
       </antcall>
       
+      <!-- Testfälle für veraltete Abrechnungen -->
+      <antcall target="runtest">
+        <param name="test.group" value="dre0_obsolet"/>
+      </antcall>
+      
       <!-- Testfälle für Kassenverzeichnis -->
       <antcall target="runtest">
         <param name="test.group" value="dvz0"/>

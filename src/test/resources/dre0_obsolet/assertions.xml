@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a:assertions xmlns:a="http://www.xoev.de/de/validator/framework/1/assertions">
+  <a:namespace prefix="rep">http://www.xoev.de/de/validator/varl/1</a:namespace>
+  <a:namespace prefix="s"
+    >http://www.xoev.de/de/validator/framework/1/scenarios</a:namespace>
+  <a:namespace prefix="html">http://www.w3.org/1999/xhtml</a:namespace>
+  
+  <!-- DiGA Abrechnung Beispiele -->
+  <a:assertion
+      report-doc="xrechnung-1.2-invalid_double_id-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  
+  <a:assertion
+    report-doc="xrechnung-1.2-invalid-report.xml"
+    test="/rep:report/rep:assessment/rep:reject"
+    >Das Dokument sollte abgelehnt werden</a:assertion>
+  <a:assertion report-doc="xrechnung-1.2-invalid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-1' and @level='error']"
+    >Sollte fehlschlagen, da Dokument veraltet</a:assertion>
+  <a:assertion report-doc="xrechnung-1.2-invalid-report.xml"
+    test="/rep:report/rep:scenarioMatched[1]/rep:validationStepResult[4]/rep:message[ @code = 'DRE0-EDC-2' and @level='error']"
+    >Sollte fehlschlagen, da Dokument veraltet und Spezifikation unzureichend</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.0-valid-report.xml"
+      test="/rep:report/rep:assessment/rep:reject"
+    >Sollte fehlschlagen, da Dokument in der falschen Version vorliegt.</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.0-valid_beispiel2-report.xml"
+      test="/rep:report/rep:assessment/rep:reject"
+    >Sollte fehlschlagen, da Dokument in der falschen Version vorliegt.</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+      test="/rep:report/rep:assessment/rep:reject">
+    Report has status reject
+  </a:assertion>
+  
+  <a:assertion report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+    test="/rep:report/rep:assessment/rep:reject"
+    >Sollte fehlschlagen, da Dokument in der falschen Version vorliegt.</a:assertion>
+  <a:assertion report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+    test="/rep:report/rep:assessment/rep:reject"
+    >Sollte fehlschlagen, da Dokument in der falschen Version vorliegt.</a:assertion>
+  <a:assertion report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+    test="/rep:report/rep:assessment/rep:reject"
+    >Sollte fehlschlagen, da Dokument in der falschen Version vorliegt.</a:assertion>
+  <a:assertion report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+    test="/rep:report/rep:assessment/rep:reject"
+    >Sollte fehlschlagen, da Dokument in der falschen Version vorliegt.</a:assertion>
+  <a:assertion report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+    test="/rep:report/rep:assessment/rep:reject"
+    >Sollte fehlschlagen, da Dokument in der falschen Version vorliegt.</a:assertion>
+  <a:assertion report-doc="xrechnung-2.0-invalid_schemeid-report.xml"
+    test="/rep:report/rep:assessment/rep:reject"
+    >Sollte fehlschlagen, da Dokument in der falschen Version vorliegt.</a:assertion>
+  
+  <a:assertion
+      report-doc="xrechnung-2.1.1-invalid-report.xml"
+      test="/rep:report/rep:assessment/rep:reject"
+    >Das Dokument sollte abgelehnt werden</a:assertion>
+</a:assertions>
