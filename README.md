@@ -21,7 +21,7 @@ Weitere technische Informationen finden Sie unter [Development](docs/development
 
 + Validierung von Anfragen und Antworten für das Einlösen von Freischaltcodes gemäß Verfahrenskennzeichen EDFC0 und
   TDFC0.
-+ Validierung von Anfragen und Antworten für das Einreichen von DiGA-Rechnungen auf Basis von EN16931 CIUS XRechnung 2.2 und 2.0, jeweils in Ausprägung UN/CEFACT CII 100.D16B gemäß Verfahrenskennzeichen EDRE0 und TDRE0.
++ Validierung von Anfragen und Antworten für das Einreichen von DiGA-Rechnungen auf Basis von EN16931 CIUS XRechnung 2.2, jeweils in Ausprägung UN/CEFACT CII 100.D16B gemäß Verfahrenskennzeichen EDRE0 und TDRE0.
 + Validierung von Stammdaten zu DiGAs und DiGA-Herstellern gemäß Verfahrenskennzeichen EDVZ0. 
 + Validierung von Stammdaten zum Krankenkassen Mappingverzeichnis.
 
@@ -40,4 +40,3 @@ Weitere technische Informationen finden Sie unter [Development](docs/development
   
   Aus diesem Grund wird übergangsweise intern die `schemeId` Liste erweitert. Dieser Workaround sollte frühest möglich korrigiert werden.
 + Die Reports und Fehlertexte werden nur in deutscher Sprache erstellt.
-+ Diese Version definiert Abrechnungen im Format XRechnung 2.0 als akzeptabel. Die Schematron Teilprüfung wird durch die EN16931 Regeln jedoch als "nicht valide" eingestuft.

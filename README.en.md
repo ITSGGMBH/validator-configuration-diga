@@ -19,7 +19,7 @@ Please see [Development](docs/development.en.md) for more information on develop
 ## Features
 
 + Validating request and response of communication standard EDFC0 and TDFC0.
-+ Validating request and response of DiGA invoices based on EN16931 CIUS XRechnung 2.2 and 2.0, notably UN/CEFACT CII 100.D16B according to EDRE0 and TDRE0.
++ Validating request and response of DiGA invoices based on EN16931 CIUS XRechnung 2.2, notably UN/CEFACT CII 100.D16B according to EDRE0 and TDRE0.
 + Validating DiGA and DiGA creator data according to EDVZ0.
 + Validating data of the "Krankenkassen Mappingverzeichnis".
 
@@ -38,4 +38,3 @@ Please see [Development](docs/development.en.md) for more information on develop
   
   A workaround has been implemented to add the DiGA specific `schemeId` codes ("XR01", "XR02", "XR03") to the EN-16931 validation. This workaround shall be fixed as soon as possible.
 + Reports and error messages will be in German language.
-+ This version defines XRechnung 2.0 formatted files to be acceptable. However, the EN16931 sub-validation will be shown as "not valid".
